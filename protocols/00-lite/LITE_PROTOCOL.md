@@ -52,6 +52,20 @@ Al `LITE_LEDGER.md` van **únicamente** dos tipos de claim:
 Todo lo demás (curiosidades de mercado, features de nicho, tecnicismos
 observados) vive como notas en `LITE_BENCHMARK.md`, sin ledger.
 
+## 3b. Regla de lectura (qué cuenta como fuente)
+
+Un snippet del buscador **no** es haber leído la fuente: solo prueba que
+la fuente existe y de qué dominio viene. Por eso:
+
+- Un claim `REGULATORIO` solo llega a `SUPPORTED` si se leyó la fuente
+  primaria (fetch a norma, organismo o colegio). Con solo snippet,
+  el techo es `PARTIALLY_SUPPORTED`.
+- Un claim de `MVP` puede ser `SUPPORTED` con snippet **únicamente** si
+  la fuente es el sitio oficial del producto y lo afirmado es oferta
+  pública (features, pricing). Todo lo demás, techo `PARTIALLY`.
+- Cada fetch suma costo: reservarlos para regulatorios y el corte del
+  MVP. El resto se cierra con snippets + `UNRESOLVED` donde corresponda.
+
 ## 4. Fases
 
 ### L0 — Intake (máximo 1 ronda de preguntas)

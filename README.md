@@ -68,6 +68,10 @@ researcher/
 ├── output/                          ← corridas LOCALES, no versionadas (ver output/README.md)
 │   ├── README.md                    ← convención de carpetas por etapa
 │   └── <slug>/                      ← brief/ · discovery/ · lite/ por investigación
+├── skills/
+│   └── researcher/                  ← skill para usar el kit desde cualquier proyecto
+│       ├── SKILL.md                 ← instálalo con symlink (ver INSTALL.md)
+│       └── INSTALL.md
 └── docs/
     └── PIPELINE.md                  ← cómo encadenar Lite → Fase 1 → Fase 2 → ADRs
 ```
@@ -187,6 +191,13 @@ del diseño original.
   `templates: add run-lite request`.
 - `UNRESOLVED` valiosos → backlog de preguntas de validación con usuarios,
   no se esconden.
+
+## Skill: usar el kit desde otros proyectos
+
+`skills/researcher/` es el acceso directo: instálalo una vez con symlink
+(ver `skills/researcher/INSTALL.md`) y después pedí en cualquier proyecto
+"investigá el rubro X en modo Lite". El agente lee el protocolo del kit
+y escribe los artefactos en `<ese-proyecto>/output/<slug>/`, nunca acá.
 
 ## Para quién es esto
 
