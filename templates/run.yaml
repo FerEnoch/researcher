@@ -1,4 +1,4 @@
-# Metadatos de corrida — copiar a research/<slug>/run.yaml
+# Metadatos de corrida — copiar a output/<slug>/run.yaml
 
 research_id: <slug>-001
 rubric: <rubro>
@@ -14,7 +14,14 @@ scope:
   argentina_research: true
   technical_observation: true
 # Fase 2 (completar al avanzar):
-# product_brief: research/<slug>/09_PRODUCT_BRIEF.md
-# claim_ledger_final: research/<slug>/CLAIM_LEDGER_FINAL.md
+# product_brief: output/<slug>/brief/09_PRODUCT_BRIEF.md
+# claim_ledger_final: output/<slug>/brief/CLAIM_LEDGER_FINAL.md
 # discovery_status: pending
 notes: ""
+# Medición Lite (completar al cerrar un Lite; calibra el costo del modo express)
+# lite_measured:
+#   searches: <nro de búsquedas>
+#   fetches: <nro de páginas consultadas>
+#   wall_time_min: <minutos aprox>
+#   artifacts: [LITE_DOMAIN.md, LITE_BENCHMARK.md, LITE_ARGENTINA.md, LITE_LEDGER.md, LITE_BRIEF.md]
+#   escalate_to_phase1: <sí/no + motivo>

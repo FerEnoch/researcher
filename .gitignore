@@ -19,3 +19,10 @@ Thumbs.db
 
 # Zip originales (el repo guarda los protocolos descomprimidos)
 *.zip
+
+# Outputs de research: viven en output/<slug>/ y NO se versionan.
+# El repo que se publica en GitHub es solo el kit (protocolos + templates + docs).
+# Cada corrida local conserva sus artefactos sin ensuciar el historial.
+output/*
+!output/.gitkeep
+!output/README.md

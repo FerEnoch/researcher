@@ -14,8 +14,8 @@ MODELOS:
 - SPECIALIST_MODELS: <opcional>
 
 INPUTS:
-- PRODUCT_BRIEF: research/<slug>/09_PRODUCT_BRIEF.md
-- CLAIM_LEDGER_FINAL: research/<slug>/CLAIM_LEDGER_FINAL.md
+- PRODUCT_BRIEF: output/<slug>/brief/09_PRODUCT_BRIEF.md
+- CLAIM_LEDGER_FINAL: output/<slug>/brief/CLAIM_LEDGER_FINAL.md
 - OTHER_RESEARCH: <rutas opcionales>
 
 CONTEXTO:
@@ -42,5 +42,5 @@ No generes backlog ni código de producción. No produzcas ADRs definitivos.
 Al finalizar, identifica qué decisiones deberían pasar a ADR y entrega el
 contexto necesario para trabajarlas con IA de forma ad hoc y especializada.
 Finaliza con FINAL_TECHNICAL_DISCOVERY.md y TECH_DECISION_LEDGER_FINAL.md
-en research/<slug>/discovery/.
+en output/<slug>/discovery/.
 ```

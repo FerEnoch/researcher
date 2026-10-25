@@ -7,7 +7,15 @@ Es la vista de punta a punta; el detalle de cada fase vive en su protocolo.
 
 ```
 Idea / rubro
-  │  templates/run-research.md
+  │  templates/run-lite.md  (express)  o  templates/run-research.md (completa)
+  ▼
+┌────────────────────────────────────────────────┐
+│ LITE · protocols/00-lite/ (opcional)           │
+│ Dominio → Benchmark → Argentina → Mini-ledger  │
+│ → BRIEF 1 PÁGINA                               │
+└────────────────────────────────────────────────┘
+  │  LITE_BRIEF.md (+ LITE_LEDGER.md si hay claims regulatorios/MVP)
+  │  ⚠️ decisión: ¿la apuesta justifica Fase 1 completa?
   ▼
 ┌────────────────────────────────────────────────┐
 │ FASE 1 · protocols/01-benchmarking/            │
@@ -16,7 +24,7 @@ Idea / rubro
 │ → Adversarial → Defensa → Adjudicación         │
 │ → Discovery → PRODUCT BRIEF → FINAL REPORT     │
 └────────────────────────────────────────────────┘
-  │  09_PRODUCT_BRIEF.md + CLAIM_LEDGER_FINAL.md
+  │  09_PRODUCT_BRIEF.md + CLAIM_LEDGER_FINAL.md  (en output/<slug>/brief/)
   │  ⚠️ pausa humana: validar el brief antes de seguir
   ▼
 ┌────────────────────────────────────────────────┐
@@ -27,7 +35,7 @@ Idea / rubro
 │ → Adversarial → Defensa → Adjudicación         │
 │ → FINAL TECHNICAL DISCOVERY                    │
 └────────────────────────────────────────────────┘
-  │  FINAL_TECHNICAL_DISCOVERY.md + TECH_DECISION_LEDGER_FINAL.md
+  │  FINAL_TECHNICAL_DISCOVERY.md + TECH_DECISION_LEDGER_FINAL.md  (en output/<slug>/discovery/)
   │  + decisiones candidatas a ADR + unresolved + riesgos
   ▼
 ADRs ad hoc del proyecto (fuera de este repo)
@@ -65,9 +73,12 @@ Los ADRs se trabajan con IA de forma especializada por proyecto
 - Código de producción.
 - ADRs definitivos.
 
-## Cuándo usar solo la Fase 1
+## Cuándo usar el modo Lite
 
 Si el objetivo es inspiración / benchmarking / exploración de ideas
-para decidir si un proyecto vale la pena, la Fase 1 sola alcanza:
-deja benchmark + brief + preguntas abiertas sin pagar el costo
-de un discovery técnico completo.
+para decidir si un proyecto vale la pena, el Lite alcanza:
+deja benchmark + brief de 1 página sin pagar el costo del ciclo
+adversarial ni del discovery técnico. Si el Lite muestra una apuesta
+real, se escala a Fase 1 (brief completo) o directo a Fase 2 con el
+Lite Brief como input provisorio (marcando lo no validado como
+`UNRESOLVED`).

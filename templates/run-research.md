@@ -37,4 +37,4 @@ detecta ambigüedades materiales. Agrupa las preguntas y explica brevemente
 por qué cada una puede cambiar el resultado.
 ```
 
-Al iniciar, crear `research/<slug>/run.yaml` (ver `templates/run.yaml`).
+Al iniciar, crear `output/<slug>/run.yaml` (ver `templates/run.yaml`).
