@@ -1,0 +1,15 @@
+# Metadatos de la corrida de ejemplo (reconstruido a modo ilustrativo)
+
+research_id: compraventa-autos-001
+rubric: compraventa de autos
+market: Argentina
+orchestrator_model: Muse Spark 1.3 Contributor
+adversarial_model: DeepSeek V4 Pro
+started_at: 2026-10-22
+status: active
+scope:
+  indirect_substitutes: false
+  global_research: true
+  argentina_research: true
+  technical_observation: true
+notes: "Corrida inicial del protocolo; ver run-request.md"

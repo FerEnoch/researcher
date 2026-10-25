@@ -1,0 +1,20 @@
+# Metadatos de corrida — copiar a research/<slug>/run.yaml
+
+research_id: <slug>-001
+rubric: <rubro>
+market: Argentina
+orchestrator_model: <modelo A>
+adversarial_model: <modelo B>
+started_at: YYYY-MM-DD
+# active → brief-ready → discovery-active → done
+status: active
+scope:
+  indirect_substitutes: false
+  global_research: true
+  argentina_research: true
+  technical_observation: true
+# Fase 2 (completar al avanzar):
+# product_brief: research/<slug>/09_PRODUCT_BRIEF.md
+# claim_ledger_final: research/<slug>/CLAIM_LEDGER_FINAL.md
+# discovery_status: pending
+notes: ""

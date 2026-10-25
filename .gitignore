@@ -1,0 +1,21 @@
+# Dependencias y temporales de herramientas de agentes
+node_modules/
+.opencode/
+.gentle/
+.atl/
+
+# Outputs de research en curso (descomentar si no se quieren versionar borradores)
+# research/*/*.draft.md
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Zip originales (el repo guarda los protocolos descomprimidos)
+*.zip
