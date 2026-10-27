@@ -6,6 +6,12 @@ Este protocolo transforma un Product Brief validado en un Technical Discovery au
 
 No produce directamente ADRs definitivos, arquitectura final ni backlog de implementación. Su objetivo es reducir incertidumbre técnica y documentar decisiones, alternativas, riesgos y preguntas abiertas antes de entrar en una etapa de ADRs y arquitectura detallada.
 
+Antes de cualquier artefacto, incluso `run.yaml`, resolver
+[kit y permisos](../../skills/researcher/references/kit.md) y aplicar el
+[preflight Git de output](../../skills/researcher/references/output-guard.md),
+también al invocar este protocolo directamente sin el skill. Sin Git,
+permisos o exclusión verificada, detenerse sin escribir artefactos.
+
 ## 1. Variables de ejecución
 
 El protocolo NO asume modelos fijos.
@@ -17,7 +23,7 @@ La request debe declarar:
 Opcionalmente:
 - `SPECIALIST_MODELS`
 - `DOMAIN`
-- `TARGET_MARKET`
+- `TARGET_MARKET` (solo confirmación del mercado validado del brief; no override)
 - `PREFERRED_STACK`
 - `FORBIDDEN_STACK`
 - `INFRA_CONSTRAINTS`
@@ -48,6 +54,18 @@ Si la duda no es material, debe continuar y documentar la suposición.
 Leer y usar como fuente primaria:
 1. `PRODUCT_BRIEF.md`
 2. `CLAIM_LEDGER_FINAL.md`
+
+El mercado se hereda del Product Brief validado por un humano y se registra
+en `market` de `run.yaml` usando `templates/run.yaml`, sin país/región por
+defecto. `TARGET_MARKET` en el pedido es una confirmación, no otra fuente de
+configuración. Si falta el mercado o contradice pedido/metadata/brief,
+preguntar y esperar antes de investigar. Cualquier mercado nuevo exige
+revalidación humana del brief y su evidencia aplicable antes de continuar;
+no sustituirlo silenciosamente ni asumir Argentina/LatAm.
+
+Al retomar corridas antiguas, conservar artefactos y metadata históricos
+sin migración ni renombre; registrar sus rutas exactas en `run.yaml` (`notes`).
+Para nuevas corridas usar `scope.target_market_research`.
 
 No reinterpretar el Product Brief como especificación técnica cerrada.
 
@@ -229,7 +247,9 @@ Analizar según corresponda:
 - supply chain,
 - regulación aplicable.
 
-Si el mercado incluye Argentina, contemplar requisitos locales cuando correspondan.
+Evaluar requisitos de las jurisdicciones del mercado validado, con fuentes
+y alcance explícitos. Por ejemplo, ARCA solo si Argentina está en alcance
+y aplica; ningún regulador o proveedor de pagos es un default universal.
 
 ### Fase 6 — Integration Discovery
 Crear:

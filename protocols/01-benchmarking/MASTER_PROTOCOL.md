@@ -29,11 +29,23 @@ utilizando los siguientes modelos:
 - ORCHESTRATOR_MODEL: <modelA>
 - ADVERSARIAL_MODEL: <modelB>
 
+MERCADO OBJETIVO (required; user-selected at runtime):
+<country, region or set of markets; specify jurisdictions>
+
 Contexto adicional:
 <optional context>
 ```
 
-Default target market after global research: **Argentina**.
+The user must choose the target market at runtime. `market` in
+`templates/run.yaml` is canonical and required; the template is `null`,
+not a default country or region. If missing, still a placeholder, or in
+conflict with the request/run metadata, ask and wait before research.
+Never silently assume Argentina or LatAm. Record the agreed scope and
+jurisdictions, and propagate them to every phase/subagent.
+
+Use `scope.target_market_research` for new metadata; `argentina_research`
+is historical only. Keep old runs and artifacts unchanged, without renames
+or migrations; when resuming, record their exact paths in `run.yaml` (`notes`).
 
 Default scope may include any relevant combination of:
 
@@ -123,8 +135,8 @@ Competitive benchmarking is a method used to achieve these objectives, not the s
 Research and keep separate:
 
 1. **Global Leaders**
-2. **LatAm / Regional References**
-3. **Argentina References**
+2. **Regional References relevant to the chosen market**
+3. **Target Market References**
 4. **Innovative Startups / Emerging Products**
 5. **Relevant Open Source Products**
 
@@ -198,25 +210,26 @@ Never present hidden architecture as fact without evidence.
 
 ---
 
-# 6. GLOBAL-FIRST, ARGENTINA-SECOND
+# 6. GLOBAL-FIRST, TARGET-MARKET-SECOND
 
 The process must have two distinct geographic stages.
 
-## Stage A — Global / Regional Research
+## Stage A — Global / Relevant Regional Research
 
 Understand mature patterns, innovation and category structure.
 
-## Stage B — Argentina-Specific Research
+## Stage B — Target-Market Research
 
 Perform an independent local investigation, then compare it with global findings.
 
 When applicable, investigate:
 
-- Argentine competitors;
+- competitors in the user-selected market;
 - local workflows and expectations;
-- WhatsApp usage;
-- Mercado Pago and local payments;
-- invoicing and ARCA-related operational implications;
+- locally relevant communication channels;
+- payment methods/providers available in the chosen jurisdictions;
+- invoicing and tax authority requirements (e.g. ARCA only if Argentina
+  is in scope and applicable; likewise Mercado Pago where available/relevant);
 - sector-specific regulation;
 - privacy/data handling;
 - logistics;
@@ -224,7 +237,8 @@ When applicable, investigate:
 - support/onboarding conventions;
 - economic constraints that materially affect product design.
 
-Never treat Argentina as a simple localization or translation layer.
+Never treat the chosen market as a simple localization or translation layer.
+Regional coverage follows that market, never an implicit LatAm scope.
 
 ---
 
@@ -267,7 +281,7 @@ Example:
 
 Domain mapping must precede final competitor selection.
 
-Global research must precede Argentina comparison.
+Global research must precede target-market comparison.
 
 First synthesis must precede adversarial review.
 
@@ -296,7 +310,7 @@ It must:
 - find counterexamples;
 - identify missing competitors/categories;
 - detect selection bias;
-- challenge global-to-Argentina extrapolation;
+- challenge global-to-target-market extrapolation;
 - challenge feature-copying logic;
 - challenge MVP priorities;
 - distinguish correlation from causation;
@@ -334,7 +348,7 @@ Produce all phases in `WORKFLOW.md`:
 2. Domain Mapping
 3. Global Benchmark Discovery
 4. Deep Global Benchmark
-5. Argentina Research
+5. Target Market Research
 6. Synthesis V1
 7. Claim Ledger V1
 8. Adversarial Review
@@ -358,7 +372,7 @@ For every candidate feature, ask:
 2. Which actor needs it?
 3. How frequently?
 4. Is it expected/table stakes or differentiating?
-5. Is it relevant to Argentina?
+5. Is it relevant to the user-selected target market?
 6. What operational burden does it create?
 7. What technical/integration dependencies exist?
 8. What evidence supports building it?
@@ -435,7 +449,7 @@ Features without sufficient evidence, premature scale requirements, speculative 
 
 ## Integrations
 
-Global and Argentina-specific.
+Global and specific to the chosen market/jurisdictions.
 
 ## Conceptual Domain Model
 
@@ -476,7 +490,7 @@ At minimum:
 01_DOMAIN_MAP.md
 02_COMPETITOR_UNIVERSE.md
 03_GLOBAL_BENCHMARK.md
-04_ARGENTINA_MARKET.md
+04_TARGET_MARKET.md
 05_SYNTHESIS_V1.md
 CLAIM_LEDGER_V1.md
 06_ADVERSARIAL_REVIEW.md
@@ -499,7 +513,7 @@ Do not overwrite adversarial history.
 - remain traceable to the Claim Ledger;
 - distinguish evidence from recommendation;
 - show material disagreements that remain unresolved;
-- explain differences between global patterns and Argentina;
+- explain differences between global patterns and the chosen market;
 - avoid generic product advice;
 - provide concrete implications for a full-stack web project;
 - avoid pretending that research replaces user interviews or direct validation.
@@ -516,7 +530,7 @@ Do not:
 - treat popularity as proof of user value;
 - rely heavily on SEO listicles;
 - confuse UX observation with backend architecture knowledge;
-- extrapolate U.S. practices directly to Argentina;
+- extrapolate practices from another geography directly to the chosen market;
 - hide contradictory evidence;
 - invent market data;
 - fill missing evidence with confident prose;
@@ -531,7 +545,8 @@ Before finalizing, verify:
 
 - Domain map exists.
 - Competitor categories are separated.
-- Global and Argentina research are distinct.
+- The user-selected market/jurisdictions are explicit in `market`.
+- Global and target-market research are distinct.
 - Important claims have evidence.
 - Adversarial review occurred.
 - Defense occurred.
@@ -556,8 +571,9 @@ You must:
 
 1. parse the rubro and model assignments;
 2. inspect any additional context;
-3. determine whether material clarification questions are needed;
-4. ask them if necessary;
-5. otherwise initialize the research folder/artifacts and begin Phase 1.
+3. resolve the required target market; if absent or conflicting, ask and wait;
+4. determine and ask any other material clarification questions;
+5. apply the [output preflight](../../skills/researcher/references/output-guard.md)
+   before any artifact, then initialize from `templates/run.yaml` and begin Phase 1.
 
 Do not jump directly to the final report.
