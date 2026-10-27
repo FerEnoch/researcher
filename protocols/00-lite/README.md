@@ -1,55 +1,52 @@
-# Modo Lite — Benchmark express → brief de 1 página
+# Modo Lite — Opciones fundamentadas para decidir qué validar
 
-Versión liviana de la Fase 1 para decidir **si una idea vale la pena**
-antes de pagar el costo del protocolo completo. Sin ciclo adversarial,
-con ledger mínimo y tope de esfuerzo explícito.
+Lite sirve para inspiración/exploración, contrastar una idea o apoyar una
+decisión concreta. No demuestra demanda ni entrega go/no-go o MVP validado.
+Objetivo y etapa son elecciones distintas; por defecto, Lite equilibrado,
+un modelo y sin ciclo adversarial. Si ese contraste es indispensable,
+proponer Fase 1 en vez de ampliar el Lite.
 
-## Cuándo usarlo
+## Camino rápido
 
-- Explorar un rubro nuevo, buscar inspiración, comparar ideas.
-- Armar el caso para (o contra) un proyecto interno.
-- Preparar una conversación con un cliente con algo más que opiniones.
+1. Completar [run-lite](../../templates/run-lite.md) con objetivo, decisión
+   y mercado elegido por el usuario. Registrar `market` en `run.yaml` sin
+   país/región por defecto; si falta o hay conflicto, preguntar y esperar.
+2. Resolver [kit/permisos](../../skills/researcher/references/kit.md) y pasar el
+   [preflight Git](../../skills/researcher/references/output-guard.md) antes
+   de cualquier artefacto, incluido `run.yaml`.
+3. Seguir [LITE_PROTOCOL.md](LITE_PROTOCOL.md): comparar 2–3 enfoques
+   distintos, contexto global y local independiente, fuentes inspeccionadas.
+4. Cerrar con límites, decisión habilitada e incertidumbre pendiente.
 
-## Cuándo NO usarlo (escalar a Fase 1)
+## Elegir presupuesto, no llenar cuotas
 
-- Ya hay decisión de construir y el brief va a alimentar arquitectura.
-- Hay riesgo regulatorio alto que exige adjudicación adversarial.
-- El dominio es desconocido y los claims de MVP no se pueden sostener
-  con un ledger mínimo. El propio Lite te lo dice en `UNRESOLVED`.
+Límites **propuestos**, no performance medida: exploratorio 4–6 consultas
+variadas / 2–3 lecturas; equilibrado **DEFAULT** 6–8 / 4–6. Elegir topes
+concretos. Para decisión, las incertidumbres críticas determinan profundidad
+y pueden requerir Fase 1. No son estimaciones de tiempo ni tokens.
 
-## Cómo se usa
+Geografía/startup/open source son etiquetas; contar referentes únicos sin
+cuotas aditivas. Parar por cobertura suficiente, saturación de decisión o
+presupuesto agotado, distinguiéndolos. Snippets descubren fuentes, no
+acreditan lectura ni necesidad de producto. El piloto histórico es
+**SELF-REPORTED**, no baseline medido/calibrado ni prueba de ahorro.
 
-```text
-Aplica el protocolo protocols/00-lite/LITE_PROTOCOL.md al siguiente caso.
+## Salidas en `output/<slug>/lite/`
 
-RUBRO / DOMINIO:
-<rubro>
+- `LITE_BRIEF.md`: una página ejecutiva, recomendación tentativa y validación.
+- `LITE_DOMAIN.md`: actores, contexto y supuestos.
+- `LITE_BENCHMARK.md`: enfoques, referentes y fuentes/pasajes inspeccionados.
+- `LITE_TARGET_MARKET.md`: contraste local y checks pertinentes a la decisión.
+- `LITE_LEDGER.md`: solo `REGULATORIO`/`MVP`, con estados y límites.
 
-MODELO:
-- ORCHESTRATOR_MODEL: <modelo A>
+Enlazar, no repetir. Guardar telemetría real o `null` («no medido») en
+[run.yaml](../../templates/run.yaml). Un desconocido bloquea/escalaría solo
+si es indispensable hoy, no por pertenecer a una categoría.
 
-MERCADO OBJETIVO INICIAL:
-Argentina
+## Siguiente etapa
 
-CONTEXTO DEL PROYECTO:
-<ideas iniciales, restricciones conocidas>
-```
-
-Plantilla: [`templates/run-lite.md`](../../templates/run-lite.md).
-Protocolo: [`LITE_PROTOCOL.md`](LITE_PROTOCOL.md).
-
-## Salidas (en `output/<slug>/lite/`)
-
-- `LITE_DOMAIN.md` — mapa de dominio compacto.
-- `LITE_BENCHMARK.md` — referentes por categoría (con tope y fuentes).
-- `LITE_ARGENTINA.md` — particularidades locales flash.
-- `LITE_LEDGER.md` — **solo** claims regulatorios y de MVP.
-- `LITE_BRIEF.md` — brief de 1 página.
-
-## Costo de referencia
-
-Piloto `estudio-agrimensura` (local, no versionado): 6 búsquedas, 0 fetches,
-~30 min, 5 artefactos. Detalle en `output/estudio-agrimensura/run.yaml`
-(campos `lite_measured`).
-Si un Lite supera ~2× ese costo, algo se salió del modo express:
-cortar y escalar a Fase 1.
+Fase 1 cuando hace falta un brief completo o resolver incertidumbres
+indispensables. Fase 2 requiere un Product Brief validado por una persona,
+incluido su mercado. Fase 2 lo hereda; cambiarlo requiere revalidación.
+Un Lite sin validar no es un atajo. Ver [pipeline](../../docs/PIPELINE.md)
+e [instalación](../../skills/researcher/INSTALL.md).

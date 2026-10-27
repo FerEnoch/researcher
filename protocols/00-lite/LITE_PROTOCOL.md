@@ -1,134 +1,146 @@
-# LITE PROTOCOL — Benchmark express → brief de 1 página
+# LITE PROTOCOL — Opciones fundamentadas para decidir qué validar
 
-## 0. Propósito
+## 0. Alcance e inicio seguro
 
-Producir en poco tiempo una base suficiente para decidir si una idea
-merece una Fase 1 completa: mapa de dominio compacto, benchmark con
-topes, flash Argentina, mini-ledger y brief de 1 página.
+Lite compara enfoques y prepara validaciones; no prueba demanda ni entrega
+un go/no-go o un MVP validado. Termina en un brief ejecutivo de una página
+con soporte conciso, no en arquitectura, backlog, estimaciones ni código.
 
-No produce un Product Brief validable para arquitectura. Todo lo que
-afirma y no pudo verificar queda marcado `UNRESOLVED` en el brief.
+Antes de cualquier artefacto, seguir el [preflight Git de output](../../skills/researcher/references/output-guard.md),
+incluso al usar este protocolo directamente. Resolver el kit y permisos
+según [procedencia](../../skills/researcher/references/kit.md).
+Solo después crear `output/<slug>/run.yaml` desde la
+[plantilla](../../templates/run.yaml). No sobrescribir corridas existentes.
 
-## 1. Variables de ejecución
+## 1. Objetivo, etapa y modelo
 
-El protocolo usa un único modelo:
+Registrar el objetivo por separado de la etapa Lite: **inspiración/exploración**,
+**contrastar una idea** o **apoyar una decisión concreta**. Preguntar solo si
+hay una decisión material abierta; en ese caso, una ronda de hasta tres
+preguntas. Explicitar supuestos sin convertirlos en hechos.
 
-- `ORCHESTRATOR_MODEL`
+El usuario debe elegir el mercado en runtime; registrar su alcance y
+jurisdicciones en `market` de `run.yaml`, sin default Argentina ni LatAm.
+Si falta, queda un placeholder o contradice pedido/metadata, preguntar y
+esperar aclaración antes de investigar. Es una decisión material, no un
+supuesto permitido. Al retomar corridas antiguas, conservar artefactos y
+metadata históricos y registrar sus rutas exactas en `notes`; no renombrarlos.
+Las nuevas corridas usan `scope.target_market_research`.
 
-No hay `ADVERSARIAL_MODEL`. La ausencia de revisión adversarial es una
-limitación declarada, no un detalle: el brief final incluye la sección
-"Qué NO valida este Lite".
+Un solo `ORCHESTRATOR_MODEL` por corrida Lite, elegido por usuario/runtime.
+No afirmar que corrió un modelo por estar preferido o escrito en el pedido.
+Seleccionar uno según disponibilidad y preferencias de la corrida, sin
+inventar identificadores de API ni evidencia de ejecución. No imponer un
+proveedor desde el protocolo. Dos modelos coincidentes no son fuentes
+independientes. Lite no ejecuta ciclo adversarial: si la decisión necesita
+ese contraste, proponer Fase 1 con alcance y presupuesto explícitos,
+sin ampliar el Lite automáticamente.
 
-## 2. Regla de saturación (cuándo parar de buscar)
+## 2. Presupuestos propuestos y parada
 
-Topes duros por categoría de referente:
+Estos rangos son **límites propuestos de planificación**, no cuotas mínimas,
+performance medida ni estimaciones de tiempo/tokens. Seleccionar un tope
+concreto dentro del perfil y registrarlo; se puede terminar antes.
 
-- Global Leaders: 2–4.
-- LatAm / Regional: 2–3.
-- Argentina: 2–4.
-- Startups innovadoras: 1–3.
-- Open source relevante: 0–2 (si no hay, se declara, no se rellena).
+| Perfil | Consultas variadas | Lecturas dirigidas de fuentes |
+|---|---|---|
+| Exploratorio | 4–6 | 2–3 |
+| Equilibrado (DEFAULT) | 6–8 | 4–6 |
+| Orientado a decisión | Según incertidumbres críticas; acordar límite, puede requerir Fase 1 | Priorizar evidencia indispensable |
 
-Regla de parada: si dos rondas de búsqueda consecutivas no agregan
-patrones nuevos (features, modelos de negocio, integraciones, pricing),
-se cierra el universo aunque no se haya llegado al tope. Llegar al tope
-sin saturar también cierra: el Lite no persigue exhaustividad.
+La distribución 30% apertura / 50% contraste y lectura / 20% síntesis es
+una heurística no calibrada. Favorecer lectura de fuentes frente a más
+productos redundantes, duplicar cinco archivos o sumar otro modelo.
 
-Cada referente se registra con: nombre, URL, mercado, segmento, razón de
-inclusión y al menos una fuente primaria (sitio oficial, docs, pricing,
-app store, organismo público). Sin fuente primaria, el referente no entra.
+Parar cuando los enfoques y preguntas relevantes estén suficientemente
+cubiertos, cuando nuevas búsquedas dejen de cambiar la decisión, o al
+agotar el presupuesto. Registrar motivo: `sufficient_coverage`,
+`decision_saturation` o `budget_exhausted`; agotar presupuesto **no** prueba
+saturación. No afirmar exhaustividad global tras una búsqueda superficial.
 
-## 3. Ledger mínimo (qué va al ledger y qué no)
+## 3. Cobertura diversa, no inventarios por cuota
 
-Al `LITE_LEDGER.md` van **únicamente** dos tipos de claim:
+Elegir referentes no redundantes por su aporte a la decisión. Global,
+local, startup y open source son etiquetas, no poblaciones aditivas:
+un referente con varias etiquetas cuenta una vez. Registrar nombre, URL,
+segmento, etiquetas, razón de inclusión y fuente primaria inspeccionada;
+si solo se descubrió, etiquetar pendiente, no como referente verificado.
 
-1. **Regulatorios**: colegiaturas, habilitaciones, facturación/ARCA,
-   protección de datos, normativa sectorial. Si un regulatorio no se pudo
-   verificar, queda `UNRESOLVED` y pasa al brief como pregunta bloqueante.
-2. **De MVP**: afirmaciones que sostienen el corte del MVP propuesto
-   (table stakes, diferenciador, anti-feature). Cada item del MVP
-   referencia al menos un claim del ledger o queda marcado `UNRESOLVED`.
+Comparar **2–3 enfoques genuinamente distintos** antes de recomendar:
+problema/actor, mecanismo, trade-offs, evidencia y qué validar. No fabricar
+alternativas; si no se hallaron, declarar la carencia y no cerrar una
+recomendación comparativa. Cuando aporte, incluir 1–2 inspiraciones de
+dominios adyacentes, rotuladas **INSPIRACIÓN**, no competidores directos ni
+prueba de demanda local. No inferir arquitectura oculta de una interfaz.
 
-Todo lo demás (curiosidades de mercado, features de nicho, tecnicismos
-observados) vive como notas en `LITE_BENCHMARK.md`, sin ledger.
+Mantener contexto global primero y búsqueda independiente del mercado
+elegido después: no es una traducción. Los referentes regionales siguen ese
+mercado, no una región implícita. Investigar actores, hábitos y restricciones
+pertinentes. Pagos, canales, regulación y logística se chequean según la
+jurisdicción y decisión actual; no son bloqueantes universales. Solo si el
+mercado incluye Argentina y aplica, considerar ARCA o Mercado Pago.
 
-## 3b. Regla de lectura (qué cuenta como fuente)
+## 4. Evidencia y ledger mínimo
 
-Un snippet del buscador **no** es haber leído la fuente: solo prueba que
-la fuente existe y de qué dominio viene. Por eso:
+`LITE_LEDGER.md` contiene **solo** categorías `REGULATORIO` y `MVP`.
+Las demás observaciones van en las notas de dominio/benchmark/locales.
 
-- Un claim `REGULATORIO` solo llega a `SUPPORTED` si se leyó la fuente
-  primaria (fetch a norma, organismo o colegio). Con solo snippet,
-  el techo es `PARTIALLY_SUPPORTED`.
-- Un claim de `MVP` puede ser `SUPPORTED` con snippet **únicamente** si
-  la fuente es el sitio oficial del producto y lo afirmado es oferta
-  pública (features, pricing). Todo lo demás, techo `PARTIALLY`.
-- Cada fetch suma costo: reservarlos para regulatorios y el corte del
-  MVP. El resto se cierra con snippets + `UNRESOLVED` donde corresponda.
+- Snippets son pistas de descubrimiento, no lectura ni prueba de necesidad.
+  Un fetch por sí solo tampoco acredita lectura o aplicabilidad jurídica.
+- Una página oficial leída acredita lo que el proveedor **anuncia**, no
+  demanda ni validez de un MVP. Una recomendación de MVP conecta por
+  separado evidencia con problema, actor y contexto local; cita claims o
+  queda `UNRESOLVED`. Table stakes/diferenciadores/anti-features son hipótesis.
+- Claims materiales citan pasajes primarios realmente inspeccionados:
+  URL, fecha de consulta, pasaje/sección, alcance/jurisdicción y límites.
+  Evidencia parcial solo sostiene la porción efectivamente respaldada.
+- Separar naturaleza `FACT` / `INFERENCE` / `IDEA` de confianza y estado.
+  Estados estables: `SUPPORTED`, `PARTIALLY_SUPPORTED`, `UNRESOLVED`,
+  `CONTRADICTED`. Un snippet solo no habilita apoyo material.
+- Columnas: ID, claim, categoría, naturaleza, fuente/pasaje y fecha,
+  alcance/jurisdicción, limitaciones, confianza, estado, implicancia para
+  la decisión e indispensabilidad actual. El estado no es una puntuación.
 
-## 4. Fases
+Un desconocido regulatorio o de MVP bloquea/escalaría **solo si es
+indispensable para la decisión actual**. Explicar por qué y pedir la
+validación humana/especializada o Fase 1 pertinente; no ampliar alcance
+unilateralmente. Los demás se conservan visibles sin escalado automático.
 
-### L0 — Intake (máximo 1 ronda de preguntas)
+## 5. Cinco artefactos compatibles, sin duplicación
 
-Interpretar rubro, mercado y contexto. Si hay ambigüedades materiales
-(usuarios, modelo de negocio, alcance), hacer **una sola ronda de hasta
-3 preguntas**. Lo no preguntado se resuelve con supuestos explícitos
-anotados en `LITE_DOMAIN.md`.
+Guardar bajo `output/<slug>/lite/`. Limitar presentación, no honestidad:
+las limitaciones sustanciales no se omiten para caber en una página.
 
-### L1 — Dominio compacto
+| Archivo | Contenido conciso |
+|---|---|
+| `LITE_DOMAIN.md` | Objetivo, mercado/jurisdicciones, decisión, actores, vocabulario/workflows útiles y supuestos. |
+| `LITE_BENCHMARK.md` | Comparación de enfoques, referentes únicos, fuentes/pasajes, inspiraciones y registro de consultas/lecturas. |
+| `LITE_TARGET_MARKET.md` | Mercado elegido, contraste local independiente, evidencia y checks pertinentes o no pertinentes con motivo. |
+| `LITE_LEDGER.md` | Solo REGULATORIO/MVP; IDs estables, soporte y desconocidos. Si no hay claims, declararlo. |
+| `LITE_BRIEF.md` | Una página ejecutiva: problema/actores, enfoques y trade-offs, recomendación tentativa y próxima validación. |
 
-Actores, vocabulario mínimo, 3–5 workflows típicos, entidades
-conceptuales, pains visibles, restricciones obvias. Una página como
-máximo. Salida: `LITE_DOMAIN.md`.
+El brief enlaza notas e IDs, no repite inventarios. Incluir propuesta de
+valor/superficies tentativas, table stakes (máx. 5), diferenciadores (máx. 3),
+anti-features (máx. 3), hipótesis de corte MVP con ledger, no-construir aún,
+integraciones pertinentes y riesgos top 3, compactados o referenciados.
+Cerrar con **Qué NO valida este Lite**, preguntas pendientes y la decisión
+que efectivamente habilitó (también puede ser posponer la recomendación).
 
-### L2 — Benchmark con topes
+## 6. Medición y handoff
 
-Armar el universo respetando la regla de saturación (§2). Para cada
-referente seleccionado: propuesta de valor, segmento, workflows
-principales observables, 3–5 features troncales, monetización visible,
-integraciones nombradas, señales UX/mobile. Sin inferir arquitectura
-oculta: lo no observable se marca como tal. Salida: `LITE_BENCHMARK.md`.
+Completar `run.yaml` con perfil, presupuesto, consultas variadas reales y
+fuentes realmente leídas (no llamadas fetch), modelo/config con evidencia,
+inicio/fin y duración transcurrida observada. Tokens in/out y costo solo si
+el runtime los proporciona. Ausente = `null` / «no medido», nunca cero ni
+estimación disfrazada; registrar 0 solo si se observó realmente. Registrar
+incertidumbre remanente, motivo de parada y decisión habilitada. Los rangos
+del perfil no predicen tiempo, tokens ni ahorro.
 
-### L3 — Argentina flash
+No usar el piloto histórico como baseline: sus cifras son SELF-REPORTED,
+no medidas ni calibradas. No hay umbral de costo calibrado ni ahorro demostrado.
 
-Investigación local independiente y contraste con lo global: actores
-locales, WhatsApp y canales, Mercado Pago y pagos, facturación/ARCA,
-regulación sectorial, logística, costos y expectativas comerciales.
-Lista de diferencias concretas, no traducción. Salida: `LITE_ARGENTINA.md`.
-
-### L4 — Mini-ledger + Brief 1 página
-
-Consolidar `LITE_LEDGER.md` según §3 (tabla: Claim ID, claim, tipo
-`REGULATORIO`/`MVP`, fuentes, confianza, estado, implicancia).
-Después escribir `LITE_BRIEF.md` con estas secciones fijas, una página:
-
-1. Problema y contexto (2–3 líneas).
-2. Usuarios (quién paga, quién usa, quién opera).
-3. Propuesta de valor (1–2 líneas).
-4. Superficies tentativas (web, backoffice, portal, app…).
-5. Table stakes (máx 5) y diferenciadores (máx 3).
-6. Anti-features (máx 3): qué vimos afuera y no haríamos.
-7. Corte de MVP (qué entra y por qué, con referencia al ledger).
-8. No-construir todavía.
-9. Integraciones clave.
-10. Riesgos top 3.
-11. Qué NO valida este Lite + preguntas abiertas (`UNRESOLVED`).
-
-## 5. Prohibido en Lite
-
-- Ciclo adversarial (crítica, defensa, adjudicación).
-- Claim ledger completo.
-- Technical discovery, backlog, estimaciones, código.
-- Completar huecos de evidencia con prosa confiada.
-
-## 6. Handoff / escala
-
-El Lite escala a Fase 1 cuando: hay decisión tentativa de construir, un
-`UNRESOLVED` bloquea el corte del MVP, o el riesgo regulatorio exige
-adjudicación. Lo producido se reutiliza tal cual: `LITE_DOMAIN.md`,
-`LITE_BENCHMARK.md` y `LITE_ARGENTINA.md` alimentan las Fases 1–4 de la
-Fase 1, y `LITE_LEDGER.md` se expande al formato completo.
-
-Medir cada corrida Lite en `run.yaml` (`lite_measured`: búsquedas,
-tiempo aproximado, artefactos): es el dato que calibra el costo del modo
-express a lo largo de los proyectos.
+Reutilizar las notas e IDs en Fase 1 si el alcance o una incertidumbre
+indispensable lo requiere. No hay salto silencioso a Fase 2: exige un
+Product Brief genuinamente validado por una persona y el ledger requerido
+por esa fase. Fase 2 hereda el mercado validado del brief; un cambio exige
+revalidación humana. Un Lite sin validar no lo sustituye ni etiquetándolo provisorio.

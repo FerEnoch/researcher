@@ -1,29 +1,18 @@
 # Run Request Template — Modo Lite
 
-```text
-Aplica el protocolo protocols/00-lite/LITE_PROTOCOL.md al siguiente caso.
+Usar la [plantilla canónica run-lite](../../templates/run-lite.md), sin
+mantener una segunda copia del pedido. Completar objetivo (explorar/inspirar,
+contrastar idea o apoyar decisión), decisión actual, modelo único, mercado,
+contexto y perfil/topes seleccionados; default Lite equilibrado, no de mercado.
+El mercado lo elige el usuario y se registra en `market` de `run.yaml`:
+si falta o hay conflicto, preguntar y esperar antes del research; no asumir
+Argentina ni LatAm.
 
-RUBRO / DOMINIO:
-<describir rubro>
-
-MODELO:
-- ORCHESTRATOR_MODEL: <modelo A>
-
-MERCADO OBJETIVO INICIAL:
-Argentina
-
-CONTEXTO DEL PROYECTO:
-<ideas iniciales, cliente tentativo, restricciones conocidas>
-
-PREGUNTAS QUE QUIERO RESPONDER:
-<opcional>
-
-INSTRUCCIÓN ESPECIAL:
-Trabaja en modo express: respeta los topes y la regla de saturación.
-Si algo material no se puede verificar rápido, márcalo UNRESOLVED en vez
-de seguir buscando. Si detectas que el caso necesita Fase 1 completa,
-avísalo en el brief en vez de expandir el Lite por tu cuenta.
-```
-
-Al iniciar, crear `output/<slug>/run.yaml` (ver `templates/run.yaml`,
-sección `lite_measured`) y guardar las salidas en `output/<slug>/lite/`.
+Leer [LITE_PROTOCOL.md](LITE_PROTOCOL.md) y ejecutar el
+[preflight Git](../../skills/researcher/references/output-guard.md) antes de
+cualquier artefacto. Solo después crear `output/<slug>/run.yaml` desde
+[run.yaml](../../templates/run.yaml) y los cinco archivos de `lite/`.
+Registrar observaciones reales o `null` / «no medido», no metas como medición.
+Un desconocido solo bloquea si es indispensable para la decisión actual.
+La entrega no es un MVP validado y no habilita Fase 2 sin validación humana
+genuina del Product Brief.
