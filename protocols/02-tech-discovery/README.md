@@ -16,6 +16,12 @@ Convertir decisiones de producto en una base técnica suficientemente sólida pa
 - `PRODUCT_BRIEF.md`
 - `CLAIM_LEDGER_FINAL.md`
 
+Heredar el mercado/jurisdicciones del brief validado en `market` de
+[run.yaml](../../templates/run.yaml), sin país/región por defecto. Si falta
+o hay conflicto con el pedido/metadata, preguntar y esperar; un cambio de
+mercado exige revalidación humana del brief. `TARGET_MARKET` solo confirma
+ese valor, no lo sobrescribe.
+
 Opcionales:
 - research previo,
 - restricciones de negocio,

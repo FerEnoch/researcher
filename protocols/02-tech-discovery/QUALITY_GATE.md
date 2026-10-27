@@ -2,6 +2,8 @@
 
 Antes de cerrar el Technical Discovery verificar:
 
+- [ ] `market` coincide con el mercado/jurisdicciones del brief validado;
+  cualquier cambio recibió revalidación humana, sin default ni override.
 - [ ] Cada decisión importante tiene trazabilidad al Product Brief.
 - [ ] Las decisiones irreversibles fueron revisadas adversarialmente.
 - [ ] Las alternativas descartadas están documentadas.

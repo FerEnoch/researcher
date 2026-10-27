@@ -1,27 +1,62 @@
-# Metadatos de corrida — copiar a output/<slug>/run.yaml
-
+# Metadatos — copiar a output/<slug>/run.yaml SOLO tras preflight Git.
+# Guard: skills/researcher/references/output-guard.md
+# Ausente = null / no medido; 0 solo si fue observado. No inferir del perfil.
 research_id: <slug>-001
 rubric: <rubro>
-market: Argentina
-orchestrator_model: <modelo A>
-adversarial_model: <modelo B>
-started_at: YYYY-MM-DD
-# active → brief-ready → discovery-active → done
+market: null # obligatorio: mercado elegido por usuario; sin país/región por defecto
+stage: lite # lite | phase1 | phase2; independiente del objetivo
+research_goal: null # inspiration_exploration | contrast_idea | support_decision
+current_decision: null
+profile: balanced # exploratory | balanced (DEFAULT Lite) | decision_oriented
+selected_budget: # Límites propuestos, no cuotas ni tiempo/tokens estimados.
+  varied_queries_max: null # exploratorio 4–6; equilibrado 6–8
+  source_reads_max: null # exploratorio 2–3; equilibrado 4–6
+  rationale: null # orientado a decisión: incertidumbres críticas; quizá Fase 1
+orchestrator_model: null # selección solicitada, no evidencia de ejecución
+adversarial_model: null # no se usa en Lite; requerido por contratos Fase 1/2
+runtime_evidence:
+  actual_model: null
+  configuration: null # parámetros observables, nunca secretos
+  evidence: null # referencia al registro de runtime autorizado o no medido
+  adversarial: null # evidencia solo Fase 1/2; no es fuente independiente
+kit:
+  resolved_path: null
+  commit: null
+  version: null # solo si hay evidencia explícita
+  dirty: null
+  provenance_note: null # unavailable si no pudo observarse Git/versión
+started_at: null # timestamp con zona; observado
+ended_at: null
+elapsed_seconds: null # duración transcurrida observada, no inferida del perfil
+# active → lite-done, o active → brief-ready → discovery-active → done
+# discovery-active exige Product Brief validado por humano, nunca Lite sin validar.
 status: active
 scope:
-  indirect_substitutes: false
+  indirect_substitutes: false # universo competitivo; INSPIRACIÓN adyacente se rotula aparte
   global_research: true
-  argentina_research: true
+  target_market_research: true # argentina_research solo existe en metadata histórica
   technical_observation: true
+# Fase 2 hereda market del Product Brief validado; cambios requieren revalidación humana.
+# Corridas históricas: conservar archivos/metadata y registrar rutas exactas en notes al retomar.
 # Fase 2 (completar al avanzar):
 # product_brief: output/<slug>/brief/09_PRODUCT_BRIEF.md
 # claim_ledger_final: output/<slug>/brief/CLAIM_LEDGER_FINAL.md
+# product_brief_human_validation: <quién/cuándo/alcance, sin datos innecesarios>
 # discovery_status: pending
 notes: ""
-# Medición Lite (completar al cerrar un Lite; calibra el costo del modo express)
-# lite_measured:
-#   searches: <nro de búsquedas>
-#   fetches: <nro de páginas consultadas>
-#   wall_time_min: <minutos aprox>
-#   artifacts: [LITE_DOMAIN.md, LITE_BENCHMARK.md, LITE_ARGENTINA.md, LITE_LEDGER.md, LITE_BRIEF.md]
-#   escalate_to_phase1: <sí/no + motivo>
+lite_measured: # Observaciones, no calibración ni baseline del piloto histórico.
+  varied_queries: null # consultas distintas realmente ejecutadas; no repeticiones
+  source_reads: null # fuentes efectivamente inspeccionadas, no fetch calls
+  fetches: null # compatibilidad; llamadas observadas, no prueba de lectura
+  searches: null # compatibilidad; total de consultas ejecutadas, incluidas repeticiones
+  wall_time_min: null # compatibilidad; solo duración observada
+  tokens_in: null # solo si el runtime los entrega
+  tokens_out: null
+  cost: null # solo si el runtime lo entrega
+  currency: null
+  telemetry_evidence: null # origen autorizado de valores o motivo «no medido»
+  artifacts: [] # rutas realmente escritas, no completar antes de ejecución
+  stop_reason: null # sufficient_coverage | decision_saturation | budget_exhausted
+  remaining_uncertainty: []
+  decision_enabled: null
+  escalate_to_phase1: null # recomendación + motivo indispensable actual, no automática

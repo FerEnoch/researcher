@@ -11,7 +11,7 @@ Responsable de:
 - dividir la investigación en subproblemas;
 - lanzar subagentes secuencialmente;
 - mantener el registro de claims;
-- asegurar cobertura global y argentina;
+- asegurar cobertura global y del mercado elegido por el usuario;
 - integrar resultados;
 - actuar como adjudicador final salvo que el protocolo asigne esa fase al modelo adversarial.
 
@@ -40,6 +40,12 @@ El orquestador:
 3. si las hay, formula preguntas agrupadas al usuario;
 4. si no son críticas, continúa dejando supuestos explícitos.
 
+El mercado ausente o contradictorio siempre es material: preguntar y esperar
+antes de investigar, sin asumir país ni región. Registrar lo acordado en
+`market` de `run.yaml` desde la plantilla canónica, después del guard Git.
+Al retomar corridas antiguas, conservar outputs/metadata sin renombrarlos y
+registrar sus rutas exactas en `notes`.
+
 ### Fase 1 — Domain Mapping
 
 Construir un mapa inicial del dominio:
@@ -62,7 +68,7 @@ Salida: `01_DOMAIN_MAP.md`.
 Buscar y clasificar referentes en:
 
 1. líderes globales;
-2. referentes regionales/LatAm;
+2. referentes regionales pertinentes al mercado elegido;
 3. startups/innovadores;
 4. open source relevante.
 
@@ -104,11 +110,13 @@ Seleccionar un conjunto representativo y analizar, cuando sea observable:
 
 Salida: `03_GLOBAL_BENCHMARK.md`.
 
-### Fase 4 — Argentina Research
+### Fase 4 — Target Market Research
 
-Realizar una investigación argentina independiente y luego contrastarla con la global.
+Realizar una investigación independiente del mercado registrado en `market`
+y luego contrastarla con la global. Pagos, facturación y regulación siguen
+las jurisdicciones elegidas, no un país por defecto.
 
-Salida: `04_ARGENTINA_MARKET.md`.
+Salida: `04_TARGET_MARKET.md`.
 
 ### Fase 5 — First Synthesis
 
@@ -137,7 +145,7 @@ Debe buscar:
 - fuentes débiles;
 - sesgo de selección;
 - survivorship bias;
-- generalización global→Argentina;
+- generalización global→mercado objetivo;
 - features copiadas sin justificar;
 - conclusiones basadas en popularidad;
 - sobreinterpretación de tecnología observable;
@@ -202,7 +210,7 @@ Salida: `08_PRODUCT_DISCOVERY.md`.
 Construir un brief accionable para desarrollo:
 
 - problema;
-- contexto;
+- contexto y mercado/jurisdicciones explícitos;
 - usuarios;
 - propuesta de valor;
 - alcance;

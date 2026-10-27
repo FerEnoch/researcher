@@ -15,7 +15,7 @@ utilizando los siguientes modelos:
 - ADVERSARIAL_MODEL: DeepSeek V4 Pro
 
 Contexto adicional del proyecto:
-- Mercado inicial: Argentina
+- Mercado objetivo: <elegido por el usuario; precisar jurisdicciones>
 - Tipo de producto esperado: combinación de sitio institucional, portal de clientes y backoffice
 - Restricciones conocidas: ninguna por ahora
 ```
@@ -27,6 +27,7 @@ Aplica este protocolo al rubro: veterinaria con agenda de turnos,
 utilizando los siguientes modelos:
 - ORCHESTRATOR_MODEL: <modelA>
 - ADVERSARIAL_MODEL: <modelB>
+- MERCADO OBJETIVO: <país, región o conjunto de mercados; sin default>
 ```
 
 ## Objetivo
@@ -40,8 +41,12 @@ El benchmarking competitivo es un medio para esos fines, no el fin único.
 
 ## Principios
 
-- Investigación global primero; adaptación e investigación específica de Argentina después.
-- Separar claramente líderes globales, referentes regionales/LatAm, actores argentinos, startups innovadoras y open source relevante.
+- `market` en [run.yaml](../../templates/run.yaml) es obligatorio y elegido
+  en runtime, sin default Argentina/LatAm; si falta o hay conflicto,
+  preguntar y esperar antes del research.
+- Investigación global primero; investigación independiente del mercado elegido después.
+- Separar líderes globales, referentes regionales pertinentes al mercado,
+  actores de ese mercado, startups innovadoras y open source relevante.
 - No incluir competidores indirectos o sustitutos salvo que el usuario lo solicite expresamente.
 - Toda afirmación relevante debe distinguir entre evidencia, inferencia y opinión.
 - Las discrepancias entre modelos se resuelven por evidencia, no por autoridad ni retórica.
@@ -60,4 +65,9 @@ El benchmarking competitivo es un medio para esos fines, no el fin único.
 
 ## Recomendación operativa
 
-Mantener cada investigación en una carpeta independiente bajo `research/<slug-del-rubro>/`, versionar todo en Git y conservar tanto los documentos finales como los artefactos adversariales intermedios. Esto permite auditar por qué una recomendación llegó al informe final y volver a revisar claims concretos cuando cambie el mercado.
+En este kit unificado, usar `output/<slug>/brief/` tras el
+[guard Git](../../skills/researcher/references/output-guard.md): outputs locales
+no versionados. Conservar finales e intermedios adversariales para auditoría.
+Nuevas corridas usan `04_TARGET_MARKET.md` y `scope.target_market_research`;
+las antiguas quedan sin migrar ni renombrar, registrando sus rutas exactas
+en `run.yaml` (`notes`) al retomarlas. Ver [convención vigente](../../output/README.md).

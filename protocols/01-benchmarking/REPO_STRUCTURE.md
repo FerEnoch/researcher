@@ -1,5 +1,11 @@
 # Recommended Repository Structure
 
+La estructura siguiente es histórica del protocolo aislado. En el kit
+unificado rige [output/README.md](../../output/README.md): outputs locales
+ignorados en `output/<slug>/brief/`, sin commits de research. No migrar ni
+renombrar corridas previas; registrar rutas exactas en `run.yaml` (`notes`)
+al retomarlas. Los nombres neutrales aplican a nuevas corridas.
+
 ```text
 benchmarking-research/
 ├── README.md
@@ -15,7 +21,7 @@ benchmarking-research/
 │   │   ├── 01_DOMAIN_MAP.md
 │   │   ├── 02_COMPETITOR_UNIVERSE.md
 │   │   ├── 03_GLOBAL_BENCHMARK.md
-│   │   ├── 04_ARGENTINA_MARKET.md
+│   │   ├── 04_TARGET_MARKET.md
 │   │   ├── 05_SYNTHESIS_V1.md
 │   │   ├── CLAIM_LEDGER_V1.md
 │   │   ├── 06_ADVERSARIAL_REVIEW.md
@@ -33,27 +39,16 @@ benchmarking-research/
 
 ## `run.yaml` recomendado
 
-```yaml
-research_id: inmobiliario-argentina-001
-rubric: inmobiliario
-market: Argentina
-orchestrator_model: <modelA>
-adversarial_model: <modelB>
-started_at: YYYY-MM-DD
-status: active
-scope:
-  indirect_substitutes: false
-  global_research: true
-  argentina_research: true
-  technical_observation: true
-notes: ""
-```
+Usar [templates/run.yaml](../../templates/run.yaml), no otra configuración.
+`market` comienza en `null` y es obligatorio: pedirlo al usuario si falta o
+hay conflicto, sin asumir país/región. Nuevos metadatos usan
+`scope.target_market_research`; `argentina_research` es solo histórico.
 
 ## Recomendaciones adicionales
 
-### 1. Git como log de investigación
+### 1. Git como log de investigación (convención histórica, no vigente en el kit)
 
-Hacer commits por fase, por ejemplo:
+El protocolo aislado proponía commits por fase; no aplicar a outputs de este kit:
 
 ```text
 research(inmobiliario): complete domain map
@@ -86,7 +81,7 @@ No concluir que una funcionalidad debe construirse porque muchos competidores la
 - frecuencia de uso;
 - costo operativo;
 - dependencia regulatoria;
-- relevancia argentina;
+- relevancia para el mercado elegido;
 - impacto sobre la propuesta de valor.
 
 ### 6. Tratar UX observable y arquitectura inferida de forma distinta

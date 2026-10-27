@@ -21,8 +21,8 @@ Debe contener:
 Separar en:
 
 - Global Leaders
-- LatAm / Regional
-- Argentina
+- Regional (pertinente al mercado elegido)
+- Target Market (elegido por el usuario)
 - Innovative Startups
 - Relevant Open Source
 
@@ -32,9 +32,10 @@ Para cada producto: URL, mercado, segmento, razón de inclusión y evidencia bá
 
 Comparativa profunda, con matrices cuando sea útil y análisis cualitativo obligatorio.
 
-## `04_ARGENTINA_MARKET.md`
+## `04_TARGET_MARKET.md`
 
-Debe diferenciar:
+Debe explicitar el mercado/jurisdicciones elegidos en `market` de `run.yaml`
+y diferenciar:
 
 - hechos locales;
 - particularidades operativas;
@@ -91,6 +92,8 @@ Debe contener:
 ## `09_PRODUCT_BRIEF.md`
 
 Debe poder ser entregado a un equipo de producto/desarrollo sin releer todo el research.
+Debe declarar mercado y jurisdicciones: se validan humanamente junto con el
+brief y Fase 2 los hereda; un cambio exige revalidación humana previa.
 
 ## `FINAL_REPORT.md`
 
@@ -99,7 +102,7 @@ Estructura recomendada:
 1. Executive Summary
 2. Domain Overview
 3. Global Market Findings
-4. Argentina Findings
+4. Target Market Findings
 5. Competitive Patterns
 6. Evidence-backed Opportunities
 7. Product Strategy

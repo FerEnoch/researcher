@@ -14,7 +14,7 @@ Aplica el protocolo definido en `MASTER_PROTOCOL.md` al siguiente proyecto.
 
 ## CONTEXTO
 - DOMAIN: <rubro/producto>
-- TARGET_MARKET: <mercado>
+- TARGET_MARKET: <confirmar mercado/jurisdicciones del brief validado; se hereda en market de run.yaml>
 - PROJECT_TYPE: <web app / ecommerce / SaaS / portal / combinación>
 
 ## RESTRICCIONES OPCIONALES
@@ -28,6 +28,9 @@ Aplica el protocolo definido en `MASTER_PROTOCOL.md` al siguiente proyecto.
 
 ## INSTRUCCIÓN
 
+Si falta el mercado o contradice pedido/metadata/brief, pregunta y espera;
+no asumas país ni región. Un mercado nuevo requiere revalidación humana del
+brief antes de continuar, nunca override silencioso. Usa templates/run.yaml.
 Ejecuta todas las fases de manera secuencial.
 Puedes lanzar subagentes especializados cuando agreguen valor.
 Cualquier agente o subagente puede preguntarme antes de continuar si detecta una ambigüedad material que pueda cambiar una decisión técnica.

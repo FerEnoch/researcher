@@ -20,7 +20,7 @@ INPUTS:
 
 CONTEXTO:
 - DOMAIN: <rubro/producto>
-- TARGET_MARKET: <mercado>
+- TARGET_MARKET: <confirmar mercado/jurisdicciones del brief validado; se hereda en market de run.yaml>
 - PROJECT_TYPE: <web app / ecommerce / SaaS / portal / combinación>
 
 RESTRICCIONES OPCIONALES:
@@ -33,6 +33,9 @@ RESTRICCIONES OPCIONALES:
 - COMPLIANCE_CONSTRAINTS: <...>
 
 INSTRUCCIÓN:
+Hereda el mercado validado en market de run.yaml, sin país/región por defecto.
+Si falta o contradice pedido/metadata/brief, pregunta y espera. Cualquier
+mercado nuevo requiere revalidación humana del brief, no override silencioso.
 Ejecuta todas las fases de manera secuencial. Puedes lanzar subagentes
 especializados cuando agreguen valor. Cualquier agente o subagente puede
 preguntarme antes de continuar si detecta una ambigüedad material que pueda

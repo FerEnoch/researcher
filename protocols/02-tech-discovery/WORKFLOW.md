@@ -34,8 +34,11 @@ Opcionales y dinámicos. Pueden cubrir:
 
 ## Secuencia
 
-1. Leer Product Brief + Claim Ledger.
-2. Hacer preguntas materiales al usuario si es necesario.
+1. Leer Product Brief + Claim Ledger y heredar el mercado validado en
+   `market` de `run.yaml`, sin país/región por defecto.
+2. Si falta o contradice pedido/metadata/brief, preguntar y esperar. Un
+   mercado nuevo requiere revalidación humana del brief antes de continuar;
+   resolver también las demás preguntas materiales, sin override silencioso.
 3. Traducir producto a requisitos técnicos.
 4. Modelar dominio y datos.
 5. Derivar architecture drivers.

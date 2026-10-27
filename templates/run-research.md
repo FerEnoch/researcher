@@ -14,8 +14,8 @@ MODELOS:
 - ORCHESTRATOR_MODEL: <modelo A>
 - ADVERSARIAL_MODEL: <modelo B>
 
-MERCADO OBJETIVO INICIAL:
-Argentina
+MERCADO OBJETIVO (obligatorio; se registra en market de run.yaml):
+<país, región o conjunto de mercados; precisar jurisdicciones, sin default>
 
 ALCANCE DEL PRODUCTO:
 Combinación potencial de sitio institucional, aplicaciones internas/backoffice,
@@ -34,7 +34,9 @@ PREGUNTAS QUE QUIERO RESPONDER:
 INSTRUCCIÓN ESPECIAL:
 Cualquier agente o subagente puede hacerme preguntas antes de continuar si
 detecta ambigüedades materiales. Agrupa las preguntas y explica brevemente
-por qué cada una puede cambiar el resultado.
+por qué cada una puede cambiar el resultado. Si falta el mercado o hay
+conflicto, pregunta y espera antes de investigar; no asumas Argentina/LatAm.
+Investiga global primero y el mercado elegido de forma independiente después.
 ```
 
 Al iniciar, crear `output/<slug>/run.yaml` (ver `templates/run.yaml`).

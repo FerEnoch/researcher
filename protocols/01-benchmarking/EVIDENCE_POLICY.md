@@ -31,7 +31,7 @@ Cada claim material debe registrar:
 - Claims estratégicos o de alto impacto no deben depender de una única fuente débil.
 - Cuando exista una fuente primaria clara, esta tiene prioridad sobre resúmenes secundarios, salvo evidencia de desactualización.
 - Datos de mercado deben incluir año, región y metodología cuando estén disponibles.
-- No extrapolar automáticamente tendencias de EE.UU./Europa a Argentina.
+- No extrapolar automáticamente tendencias de otra geografía al mercado elegido.
 
 ## 4. Actualidad
 
@@ -61,15 +61,19 @@ Una objeción no invalida un claim por ser convincente. El adjudicador debe eval
 
 Si ninguna postura supera razonablemente a la otra, el claim queda `UNRESOLVED`.
 
-## 7. Argentina
+## 7. Mercado objetivo
 
-La adaptación argentina requiere investigación propia. Debe revisar cuando aplique:
+El mercado elegido por el usuario (`market` en `run.yaml`) requiere
+investigación propia. Región, regulación y proveedores dependen de sus
+jurisdicciones. Debe revisar cuando aplique:
 
 - actores locales;
 - hábitos de compra/uso;
-- WhatsApp y canales de contacto;
-- medios de pago y Mercado Pago;
-- facturación e implicancias operativas de ARCA;
+- canales de contacto relevantes en ese mercado;
+- medios de pago disponibles y pertinentes a sus jurisdicciones;
+- facturación y obligaciones tributarias locales (por ejemplo, ARCA solo
+  si Argentina está en alcance y aplica; Mercado Pago como ejemplo de pagos
+  bajo la misma condición, no como requisito tributario);
 - regulación sectorial;
 - privacidad y tratamiento de datos;
 - logística y cobertura territorial;
