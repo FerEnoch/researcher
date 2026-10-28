@@ -33,7 +33,7 @@ acreditan lectura ni necesidad de producto. El piloto histórico es
 
 ## Salidas en `output/<slug>/lite/`
 
-- `LITE_BRIEF.md`: una página ejecutiva, recomendación tentativa y validación.
+- `LITE_BRIEF.md`: una página ejecutiva, recomendación tentativa y validación, con cita con links en cada decisión (sin fuente = `UNRESOLVED`).
 - `LITE_DOMAIN.md`: actores, contexto y supuestos.
 - `LITE_BENCHMARK.md`: enfoques, referentes y fuentes/pasajes inspeccionados.
 - `LITE_TARGET_MARKET.md`: contraste local y checks pertinentes a la decisión.

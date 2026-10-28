@@ -33,7 +33,9 @@ Comparar 2–3 enfoques reales, global primero y mercado elegido independiente
 después. Referentes regionales según ese mercado, no LatAm por defecto.
 Fuentes primarias leídas; snippets son pistas, no prueba de necesidad.
 Mantener desconocidos visibles; bloquear/escalar solo si son indispensables
-para esta decisión. No expandir a otra fase unilateralmente.
+para esta decisión. Citar en cada decisión/recomendación sus fuentes
+primarias inspeccionadas con links (`[nombre](URL) — fecha — pasaje/sección`);
+sin fuente, marcar `UNRESOLVED` y no recomendar. No expandir a otra fase unilateralmente.
 Registrar motivo de parada (cobertura, saturación de decisión o presupuesto),
 telemetría real o null/no medido, y la decisión que habilitó el run.
 ```

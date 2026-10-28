@@ -94,6 +94,14 @@ Las demás observaciones van en las notas de dominio/benchmark/locales.
 - Claims materiales citan pasajes primarios realmente inspeccionados:
   URL, fecha de consulta, pasaje/sección, alcance/jurisdicción y límites.
   Evidencia parcial solo sostiene la porción efectivamente respaldada.
+- **Obligación de cita por decisión: ninguna decisión, recomendación,
+  table stake, diferenciador, anti-feature, corte MVP, integración ni
+  riesgo se sostiene sin cita.** Cada una cita en el mismo artefacto sus
+  fuentes primarias realmente inspeccionadas con formato mínimo
+  `[nombre](URL) — fecha de consulta — pasaje/sección`. Sin fuente
+  inspeccionada, la decisión queda `UNRESOLVED` y no se recomienda;
+  se registra qué falta para resolverla. Un Lite sin estas citas con
+  links está incompleto, aunque enlace IDs del ledger.
 - Separar naturaleza `FACT` / `INFERENCE` / `IDEA` de confianza y estado.
   Estados estables: `SUPPORTED`, `PARTIALLY_SUPPORTED`, `UNRESOLVED`,
   `CONTRADICTED`. Un snippet solo no habilita apoyo material.
@@ -117,9 +125,12 @@ las limitaciones sustanciales no se omiten para caber en una página.
 | `LITE_BENCHMARK.md` | Comparación de enfoques, referentes únicos, fuentes/pasajes, inspiraciones y registro de consultas/lecturas. |
 | `LITE_TARGET_MARKET.md` | Mercado elegido, contraste local independiente, evidencia y checks pertinentes o no pertinentes con motivo. |
 | `LITE_LEDGER.md` | Solo REGULATORIO/MVP; IDs estables, soporte y desconocidos. Si no hay claims, declararlo. |
-| `LITE_BRIEF.md` | Una página ejecutiva: problema/actores, enfoques y trade-offs, recomendación tentativa y próxima validación. |
+| `LITE_BRIEF.md` | Una página ejecutiva: problema/actores, enfoques y trade-offs, recomendación tentativa con cita con links por decisión y próxima validación. |
 
-El brief enlaza notas e IDs, no repite inventarios. Incluir propuesta de
+El brief enlaza notas e IDs, no repite inventarios, y **cita en cada
+decisión/recomendación sus fuentes con links clicables** según la
+obligación de §4 (formato `[nombre](URL) — fecha — pasaje/sección`;
+si no hay fuente inspeccionada, marca `UNRESOLVED`). Incluir propuesta de
 valor/superficies tentativas, table stakes (máx. 5), diferenciadores (máx. 3),
 anti-features (máx. 3), hipótesis de corte MVP con ledger, no-construir aún,
 integraciones pertinentes y riesgos top 3, compactados o referenciados.
